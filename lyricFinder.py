@@ -5,7 +5,8 @@ import requests, bs4, re
 # given a specific lyric, songName, and artistName, it will search google for it.
 # Links found on google is passed to scrapeGoogle(). If lyric found, it will print song information.
 def searchLyric(specificLyric, songName, artistName):
-    searchVar = "lyrics+" + artistName.replace(" ", "+")+"+"+songName.replace(" ", "+")+"+"+specificLyric.replace(" ","+")
+    # searchVar = "lyrics+" + artistName.replace(" ", "+")+"+"+songName.replace(" ", "+")+"+"+specificLyric.replace(" ","+")
+    searchVar = "lyrics+" + artistName.replace(" ", "+")+"+"+songName.replace(" ", "+")
     try:
         res = requests.get("http://www.google.com/search?q="+searchVar)
     except Exception as e:
@@ -35,5 +36,6 @@ def scrapeGoogle(linksOnGoogle, lyric):
                 print(newLink)
                 return 1
         except Exception as ex:
-            print("Failed to get page. Continuing to next")
+            # print("Failed to get page. Continuing to next")
+            pass
     return -1
